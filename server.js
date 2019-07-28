@@ -6,7 +6,6 @@ const expressSession = require('express-session');
 const connectMongo = require('connect-mongo');
 const edge = require('edge.js');
 const proxy = require('http-proxy-middleware');
-const path = require('path');
 
 var app = express();
 mongoose.connect('mongodb://localhost/gamegamegame6', { useNewUrlParser: true }); 
@@ -53,7 +52,6 @@ app.use('/api/000050', proxy({ target: 'http://localhost:9050', changeOrigin: tr
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "client/build")))
 
 const auth = require("./middleware/auth");
 const auth2 = require("./middleware/auth2");
